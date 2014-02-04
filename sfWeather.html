@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>      
+    <link rel="stylesheet" type="text/css" href="css/sfWeather.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={YOUR_GOOGLE_API_KEY_HERE}&sensor=false"></script>
+    <script type="text/javascript" src="js/sfWeather.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <h3>Weather</h3>
+        
+        <div id="contentHome">
+            <!-- Input for custom city search --> 
+            <div id="inputWrapper" >
+                <div>
+                    <input type="text" name="city" id="city" placeholder="Enter city here"/>
+                </div>
+
+                <!-- Search city -->
+                <div>
+                    <button id="citySubmit" id="goButton">Get Map!</button>
+                </div>
+            </div>
+
+            <div id="mapWrapper">
+                <div id="map-canvas"></div>
+            </div>
+
+            <ul id="resultsList" >
+                <li><h1 class="shadow">City:</h1><span id="cityName"></span></li>
+                <li><h1 class="shadow">Temperature:</h1><span id="cityTemp"></span></li>
+                <li><h1 class="shadow">Location:</h1><span id="cityCoord"></span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
