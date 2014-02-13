@@ -10,133 +10,91 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js" type="text/javascript"></script>
     <!--<script type="text/javascript" src="js/coffee.js"></script>-->
-    <script type="text/javascript" src="js/instafeed.js"></script>
     <script type="text/javascript" src="js/instabam.js"></script>
 </head>
-
 <body>
-    <div class="container" id="wrapper">
-    
-
-        <div class="row">   
-                <div class="col-xs-0 col-sm-1 col-md-1 col-lg-2">
-                    <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://www.northdacoder.com&response_type=token" id="loginText">
-                    <img src="images/instagramLogin.png" class="instaIcon" role="button"/>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8">
-                    <h1 class="page-header" class="text-center">instabam</h1>
-                </div>
-
-                <div class="col-xs-2 col-md-4"></div>
-            
-            </div>
-
+    <!-- START OF PHOTO FEED -->
+    <div class="container">
+        <div class="row">
+            <h1 class="page-header" id="feedHeader">Feed.me</h1>
         </div>
-
-        <!-- <div class="row">
-            <div class="col-lg-12">
-                <span class="btn btn-danger buttonText">Your current latitude is: <span class="displayLat"></span></span>
-                <span class="btn btn-info buttonText">Your current longitude is: <span class="displayLon"></span></span>
-            </div>
-        </div> -->
-
-
-        <!-- START OF PHOTO FEED -->
-        <div class="container">
-            <div id="instafeed" class="row"></div>
-        </div>
-
-
+        <div id="instafeed" class="row"></div>
     </div>
-
-
+    </div>
     <script type="text/javascript">
+        Number.prototype.toRad = function() { return this * (Math.PI / 180); };
         var latitude;
         var longitude; 
+        var imglatitude;
+        var imglongitude; 
+        var distancelat;
+        var distancelon;
+        var dataArr = [];
+        var cleanData = [];
 
-        Number.prototype.toRad = function() { return this * (Math.PI / 180); };
-
-        var userFeed = new Instafeed({
-            // get: 'user',
-            get: 'location',
-            locationId: 
-            // userId: 4489780,                
-            accessToken: '4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e',
-            after: function () {
-                var distances = $("#instafeed").find('p');
-                
-                $.each(distances, function(index, distance) {
-
-                    // if (instajson.data[index].location == undefined) {
-                    //     $(distance).closest('img').hide(); 
-                    // }
-
-                    var imgLat = instajson.data[index].location.latitude;
-                    var imgLon = instajson.data[index].location.longitude;
-                    var latitudeRad = latitude.toRad();
-                    var imgLatRad = imgLat.toRad();
-                    var distanceLat = (imgLat - latitude).toRad();
-                    var distanceLon = (imgLon - longitude).toRad();
-
-                    var R = 6371; // km
-                    var a = Math.sin(distanceLat/2) * Math.sin(distanceLat/2) + Math.sin(distanceLon/2) * Math.sin(distanceLon/2) * Math.cos(latitudeRad) * Math.cos(imgLatRad); 
-                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-                    var distanceKilo = R * c;
-                    var distanceMiles = Math.round((distanceKilo * 3)/5);
-                    console.log(distanceMiles); 
-
-                    $(distance).text("Miles away: " + distanceMiles);
-                });
-
-            },
-            template: 
-
-            '<div id="{{id}}" class="col-xs-12 col-sm-4 imageHolder">' +
-                
-                    '<div class="row">' + 
-                        '<a href="{{link}}" target="_blank">' +
-                        '<img src="{{image}}" class="img-circle img-responsive instaImage" />' +
-    
-                    
-                        '<div title="{{caption}}" class="label label-danger imageLikes hide"><span class="glyphicon glyphicon-heart"></span>{{likes}}</div>' +
-                    
-                
-                        // '<span class="col-lg-8 btn-success locationButton hide">Latitude: <span class="imageCoorLat">{{model.location.latitude}} </span></span>' +
-                    
-                
-                        // '<span class="col-lg-8 btn-info locationButton hide">Longitude: <span class="imageCoorLon">{{model.location.longitude}}</span></span>' +
-                    
-                
-                        '<span class="locationButton"><p class="displayImageDistance"> </p></span>' + 
-                        '</a>' +
-                    '</div>' + 
-            
-            '</div>'
-            
-        });
-
-        function success(position) {
-        
-            console.log("geolocation success function called...");
-            longitude = Number(position.coords.longitude);
-            latitude = Number(position.coords.latitude);
-
-            $(".displayLat").text(latitude);
-            $(".displayLon").text(longitude);
-
-            userFeed.run();
-
+        function loadHtml() {
+            for (var i = 0; i < cleanData.length; i++) {
+                var imagesHTML = 
+                '<ul class="imageCard col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
+                    '<a>' + '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' + '</a>' +
+                    '<span class="hidden">' + "Distance: " + cleanData[i].distance + '  Miles ' + '</span>' + '<br>' + 
+                    '<span class="hidden">' + "Username: " + cleanData[i].userName + '</span>' + '<br>' + 
+                    '<span class="hidden">' + "Location: " + cleanData[i].locationName + '</span>' + '<br>' + 
+                    '<span class="hidden">' + "Time of post: " + cleanData[i].createdTime + '</span>' + '<br>' + 
+                    '<span class="hidden">' + "Likes: " + cleanData[i].likes + '</span>' + '<br>' + 
+                '</ul>';
+                $("#instafeed").append(imagesHTML);
+            } 
         }
 
+        function success(position) {
+            longitude = Number(position.coords.longitude).toRad();
+            latitude = Number(position.coords.latitude).toRad();
+            getData(); 
+        }
         
+        function sliceData(arr) {
+            var sliceArr = arr; 
+            for (var i = 0; i < sliceArr.length; i++) {
+                if (sliceArr[i].location != null) {
+                var imageObj = {}; 
+                imglatitude = Number(sliceArr[i].location.latitude).toRad(); 
+                imglongitude = Number(sliceArr[i].location.longitude).toRad(); 
+                distancelat = (imglatitude - latitude).toRad();
+                distancelon = (imglongitude - longitude).toRad();      
+                var R = 6371; // km    
+                var a = Math.sin(distancelat/2) * Math.sin(distancelat/2) + Math.sin(distancelon/2) * Math.sin(distancelon/2) * Math.cos(latitude) * Math.cos(imglatitude); 
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                var distanceKilo = R * c; 
+                var distanceMiles = Math.round((distanceKilo * 3)/5);
+                imageObj["distance"] = distanceMiles; 
+                imageObj["userName"] = sliceArr[i].caption.from.username; 
+                imageObj["locationName"] = sliceArr[i].location.name;
+                imageObj["imageUrl"] = sliceArr[i].images.low_resolution.url;
+                imageObj["createdTime"] = dataArr[i].created_time;
+                imageObj["likes"] = dataArr[i].likes.count; 
+                cleanData.push(imageObj);
+                }
+            }
+            cleanData.sort(function(a, b){
+            return a.distance - b.distance; 
+            });
+            loadHtml(); 
+        }
 
-        function error(msg) {
-            console.log(msg); 
-        } 
+        function getData() {
+            $.ajax({
+                type: 'GET',
+                url: "https://api.instagram.com/v1/users/self/feed?access_token=4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e",
+                dataType: 'jsonp',
+                success: function(json) {
+                    dataArr = json.data;  
+                    sliceData(dataArr); 
+                }
+            });
+        }
 
-
-
+        function error(msg) {console.log(msg);} 
         if (navigator.geolocation) {
             console.log("Geolocation found, getting coordinates now..."); 
             navigator.geolocation.getCurrentPosition(success, error); 
@@ -145,91 +103,9 @@
             error("not supported"); 
         }
 
-
-
+        $(".imageCard").hover(function() {
+            $(this).find('span').css("visibility", "visible");
+        });
     </script>
-
-    <script type="text/javascript">
-        // var feed = new Instafeed({
-        //     clientId: '16de7c347c604761bcae480576af41e8',
-        //     // accessToken: '4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e', 
-        //     target: 'myFeed',
-        //     template: '<div class="col-lg-4 col-md-6 col-sm-12">' +
-                        
-        //                 // IMAGE LINK TO INSTAGRAM
-        //                 '<a href="{{link}}" id="imageHolder">' +
-
-        //                     // IMAGE
-        //                     '<img src="{{image}}" class="img-circle img-responsive"/>' +
-
-        //                 '</a>' + 
-
-        //                 // IMAGE LOCATION
-        //                 '<span class="label label-danger col-lg-2 pull-left hide" id="imageLocation">' +
-        //                     '<span class="glyphicon glyphicon-map-marker"></span>' +
-        //                         '{{location}}' +
-        //                     '</span>' +
-                        
-        //                 // PHOTO LIKES
-        //                 '<span class="label label-info col-lg-2 pull-left" id="imageComments">' +
-        //                     '<span class="glyphicon glyphicon-comment"></span>' +
-        //                         '{{comments}}' +
-        //                 '</span>' +
-
-        //                 // IMAGE TAGS | IMAGE CAPTIONS
-        //                 '<span class="btn btn-success btn-sm col-lg-12 hide" id="imageCaption">' +
-        //                    '{{caption}}' +
-        //                 '</span>' + 
-
-        //                 // IMAGE OBJECT 
-        //                 '<ul id="dataModel">' + 
-        //                     '<li>{{model.filter}}</li>' +
-        //                     '<li>{{model.location}}</li>' +
-        //                     '<li>{{model}}</li>' +
-        //                 '</ul>' +
-
-        //             '</div>',
-
-        //         // get: 'user',
-        //         // userId: 4489780, 
-        //         get: 'tagged',
-        //         tagName: 'selfy',
-        //         limit: 18, 
-        //         resolution: 'low_resolution'
-        //     });
-
-        //     $("#refresh").click(function(){
-        //         feed.run();
-        //     });
-
-        //     feed.run();
-
-        </script> 
-
-    
 </body>
 </html>
-
-
-  <!-- <div class="row">' +
-                '<a href="http://instagram.com/{{model.user.username}}" target="_blank" title="{{model.user.full_name}}" >' +
-                    '<img src="{{model.user.profile_picture}}" class="profilePic" />' +
-                        '{{model.user.full_name}}' +
-                '</a>' +
-
-                    // '<a class="icon-bubble" href="{{link}}" title="{{caption}}">' +
-                //     '{{comments}}' +
-                // '</a>' +
-
-                // '<div class="row">' +
-                //     '{{caption}}' +
-                // '</div>' + 
-
-            '</div>'*/
-
-            // get: 'tagged',
-            // tagName: 'rocketspace',
-            // clientId: '16de7c347c604761bcae480576af41e8',
- -->
-
-
