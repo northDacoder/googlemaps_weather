@@ -58,8 +58,10 @@
         Number.prototype.toRad = function() { return this * (Math.PI / 180); };
 
         var userFeed = new Instafeed({
-            get: 'user',
-            userId: 4489780,                
+            // get: 'user',
+            get: 'location',
+            locationId: 
+            // userId: 4489780,                
             accessToken: '4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e',
             after: function () {
                 var distances = $("#instafeed").find('p');
@@ -86,6 +88,7 @@
 
                     $(distance).text("Miles away: " + distanceMiles);
                 });
+
             },
             template: 
 
