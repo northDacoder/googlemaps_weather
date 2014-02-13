@@ -21,8 +21,8 @@
                     <h1 class="page-header" id="feedHeader">
                         Feed.me
                 
-                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" id="loginText" class="col-xs-1 col-md-1">
-                            <img src="images/instaLogin.png" class="instaIcon" role="button"/>
+                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" id="loginLink" class="col-xs-1 col-md-1">
+                            <button class="instaIcon" role="button"></button>
                         </a>
                     </h1>
                 </div>
@@ -47,11 +47,11 @@
                 var imagesHTML = 
                 '<ul class="imageCard col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
                     '<a>' + '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' + '</a>' +
-                    '<span>' + "Distance: " + cleanData[i].distance + '  Miles ' + '</span>' + '<br>' + 
-                    '<span>' + "Username: " + cleanData[i].userName + '</span>' + '<br>' + 
+                    '<span class="usernametag">' + cleanData[i].userName + '</span>' + '<br>' + 
+                    '<span>' + cleanData[i].distance + '  Miles from you' + '</span>' + '<br>' + 
                     '<span>' + "Location: " + cleanData[i].locationName + '</span>' + '<br>' + 
-                    '<span>' + "Time of post: " + cleanData[i].createdTime + '</span>' + '<br>' + 
-                    '<span>' + "Likes: " + cleanData[i].likes + '</span>' + '<br>' + 
+                    '<span>' + cleanData[i].createdTime + '</span>' + '<br>' + 
+                    '<span>' + cleanData[i].likes + ' likes</span>' + '<br>' + 
                 '</ul>';
                 $("#instafeed").append(imagesHTML);
             } 
@@ -81,7 +81,7 @@
                 imageObj["userName"] = sliceArr[i].caption.from.username; 
                 imageObj["locationName"] = sliceArr[i].location.name;
                 imageObj["imageUrl"] = sliceArr[i].images.low_resolution.url;
-                imageObj["createdTime"] = dataArr[i].created_time;
+                imageObj["createdTime"] = new Date(Number(dataArr[i].created_time) * 1000).toDateString();
                 imageObj["likes"] = dataArr[i].likes.count; 
                 cleanData.push(imageObj);
                 }

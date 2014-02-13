@@ -8,9 +8,26 @@ body {padding:0px;margin:0px;background-attachment:fixed;background-repeat: no-r
 h1.page-header {font-family: 'Lily Script One', cursive;color: rgba(0,0,0,.8);text-align: center;font-size: 60px;border-bottom: none;box-shadow: inset 0px 5px 10px #111;padding-top: 20px;background: rgba(255,255,255,.1);}
 h1.page-header:hover {color: rgba(255,255,255,.6);}
 ul.imageCard {margin: 0 auto 40px auto;padding: 30px 20px 0px 20px;}
-ul.imageCard span {background-color: rgba(0,0,0,.7);padding: 4px;position: relative;bottom: 210px;left: 40px;}
+ul.imageCard span {background-color: rgba(0,0,0,.7);padding: 4px;position: relative;bottom: 210px;left: 25px;}
 ul.imageCard span:hover {}
-.instaIcon {box-shadow: none;}
+button.instaIcon {
+	box-shadow: none;
+	background-image: url('images/instaLogin.png');
+	background-repeat: no-repeat;
+	background-size: 144px 74px;
+	background-position: -23px -14px;
+	width: 100px;
+	height: 48px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid rgba(0,0,0,.9);
+	border-radius: 9px;
+	box-shadow: 2px 2px 6px #333;
+}
+span.usernametag {
+	font-size: 30px;
+	text-align: center;
+}
 .hidden {visibility: hidden;}
 .imageCard {color: white;box-shadow: 0px 0px 4px rgba(0,0,0,.9); margin: 0 auto;padding: 0;}
 img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom:20px;}
@@ -18,7 +35,28 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom:20px;}
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
-@media (max-width: 768px) {ul.imageCard span {position: relative;bottom: 12px;left: 0px;}}
+@media (max-width: 768px) {
+	#feedHeader {
+		font-size: 32px;
+	}
+	span.usernametag {
+		position: relative;
+		top: -250px;
+	}
+	ul.imageCard span {
+		position: relative;
+		bottom: 12px;
+		left: 0px;
+	}
+
+	button.instaIcon {
+		background-size: 106px 60px;
+		background-position: -16px -11px;
+		width: 76px;
+		height: 40px;
+	}
+
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) { ... }
 /* Medium devices (desktops, 992px and up) */
