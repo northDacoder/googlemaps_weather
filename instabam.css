@@ -51,9 +51,16 @@ div.imageoverlay {
 	height: 150px;
 	color: white;
 	font-size: 18px;
-	opacity: 1;
+	opacity: 0;
 	margin-top: -229px;
 	padding: 20px 15px;
+	position: relative;
+	left: 30px;
+	bottom: 60px;
+}
+
+div.imageoverlay:hover {
+	opacity: 1;
 }
 
 
@@ -81,18 +88,27 @@ button.instaIcon {
 
 span.distancetag {
 	background-color: rgba(0,0,0,.6);
+		text-decoration: none;
+
 }
 
 span.locationtag {
 	background-color: rgba(0,0,0,.6);
+		text-decoration: none;
+
 }
 
+.row span {
+	padding: 5px;
+	text-decoration: none;
+
+}
 h1.usernametag {
 	font-size: 40px;
 	text-align: center;
-	margin-bottom: 70px;
+	margin-bottom: 120px;
 	position: relative;
-	top: 115px;
+	top: 70px;
 }
 
 img {
@@ -106,6 +122,8 @@ img {
 	width: 210px;
 	height: 210px;
 }
+
+
 
 #instafeed {
 	width: 105%;
