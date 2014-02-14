@@ -10,15 +10,16 @@ a {
 #wrapper {margin:0 auto;padding:0;width:1200px;height: 100%;}
 h1.page-header {font-family: 'Lily Script One', cursive;color: rgba(0,0,0,.8);text-align: center;font-size: 60px;border-bottom: none;box-shadow: inset 0px 5px 10px #111;padding-top: 20px;background: rgba(255,255,255,.1);}
 h1.page-header:hover {color: rgba(255,255,255,.6);}
-ul.imageCard {margin: 0 auto 40px auto;padding: 30px 20px 0px 20px;}
+ul.imageCard {margin: 0 auto 40px auto;padding: 10px 10px 0px 10px;}
 div.imageoverlay {
-	background-image: url('images/navIcon1.gif');
-	background-size: 306px 306px;
-	height: 306px;
-	width: 306px; 
-	position: absolute;
+	/* background-image: url('images/navIcon1.gif'); */
+	/* background-size: 306px 306px; */
+	/* height: 306px; */
+	/* width: 306px; */
+	/* position: absolute; */
 	top: 30px;
 	left: 24px;
+	background-color: rgba(0,0,0,.4);
 	color: white;
 	padding: 20px;
 	font-size: 22px;
@@ -27,6 +28,10 @@ div.imageoverlay {
 
 div.imageoverlay:hover {
 	opacity: 1;
+}
+
+div.imageoverlay span {
+	text-decoration: none;
 }
 
 button.instaIcon {
@@ -49,15 +54,25 @@ span.usernametag {
 }
 .hidden {visibility: hidden;}
 .imageCard {color: white;box-shadow: 0px 0px 4px rgba(0,0,0,.9); margin: 0 auto;padding: 0;}
-img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom:20px;}
-#instafeed {width:100%;margin:20px auto;padding:0px;border-radius:8px;height:100px;}
+img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom: 0px; border: 3px dashed white;}
+#instafeed {width:100%;margin: 0px auto;padding:0px;border-radius:8px;}
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 @media (max-width: 768px) {
-	body{margin: 0; padding: 0; width: 100%; height: 100%;}
+	body{margin: 0; padding: 0; padding-top: 75px; width: 100%; height: 100%;}
 	#feedHeader {
+		padding-top: 18px;
 		font-size: 32px;
+		position: fixed;
+		width: 100%;
+		height: 60px;
+		top: -45px;
+		box-shadow: none;
+		background-color: rgba(0,0,0,.8);
+		box-shadow: 2px 2px 1px black;
+		color: white;
+		z-index: 10;
 	}
 	span.usernametag {
 		position: relative;
@@ -77,6 +92,20 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom:20px;}
 		position: relative;
 		bottom: 5px;
 	}
+
+div.imageoverlay {
+	opacity: 1;
+	padding-top: 30px;
+	padding-bottom: 15px;
+	background: rgba(0,0,0,.7);
+}
+
+
+div.imageoverlay:hover {
+	opacity: 1;
+}
+
+
 
 }
 /* Small devices (tablets, 768px and up) */
