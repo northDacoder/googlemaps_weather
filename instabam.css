@@ -4,11 +4,24 @@
 @import url(http://fonts.googleapis.com/css?family=Lily+Script+One);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300);
 body {padding:0px;margin:0px;background-attachment:fixed;background-repeat: no-repeat;background-image:url('images/stripes.jpeg');background-size: cover;font-family: 'Quicksand', cursive;font-weight: normal;text-decoration: none;}
+a {
+	text-decoration: none;
+}
 #wrapper {margin:0 auto;padding:0;width:1200px;height: 100%;}
 h1.page-header {font-family: 'Lily Script One', cursive;color: rgba(0,0,0,.8);text-align: center;font-size: 60px;border-bottom: none;box-shadow: inset 0px 5px 10px #111;padding-top: 20px;background: rgba(255,255,255,.1);}
 h1.page-header:hover {color: rgba(255,255,255,.6);}
 ul.imageCard {margin: 0 auto 40px auto;padding: 30px 20px 0px 20px;}
 div.imageoverlay {
+	background-image: url('images/navIcon1.gif');
+	background-size: 306px 306px;
+	height: 306px;
+	width: 306px; 
+	position: absolute;
+	top: 30px;
+	left: 24px;
+	color: white;
+	padding: 20px;
+	font-size: 22px;
 	opacity: 0;
 }
 
@@ -42,6 +55,7 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom:20px;}
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 @media (max-width: 768px) {
+	body{margin: 0; padding: 0; width: 100%; height: 100%;}
 	#feedHeader {
 		font-size: 32px;
 	}
