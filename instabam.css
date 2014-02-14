@@ -4,9 +4,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lily+Script+One);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300);
 body {padding:0px;margin:0px;background-attachment:fixed;background-repeat: no-repeat;background-image:url('images/stripes.jpeg');background-size: cover;font-family: 'Quicksand', cursive;font-weight: normal;text-decoration: none;}
-a {
-	text-decoration: none;
-}
 #wrapper {margin:0 auto;padding:0;width:1200px;height: 100%;}
 h1.page-header {font-family: 'Lily Script One', cursive;color: rgba(0,0,0,.8);text-align: center;font-size: 60px;border-bottom: none;box-shadow: inset 0px 5px 10px #111;padding-top: 20px;background: rgba(255,255,255,.1);}
 h1.page-header:hover {color: rgba(255,255,255,.6);}
@@ -17,17 +14,22 @@ div.imageoverlay {
 	/* height: 306px; */
 	/* width: 306px; */
 	/* position: absolute; */
+	margin: 0 auto; 
+	width: 306px; 
+	height: 200px;
 	top: 30px;
 	left: 24px;
-	background-color: rgba(0,0,0,.4);
+	margin-top: 15px;
+	padding: 30px;
 	color: white;
-	padding: 20px;
 	font-size: 22px;
-	opacity: 0;
+	opacity: 1;
+	background: rgba(0,0,0,.7);
 }
 
 div.imageoverlay:hover {
 	opacity: 1;
+	text-decoration: none;
 }
 
 div.imageoverlay span {
@@ -48,10 +50,12 @@ button.instaIcon {
 	border-radius: 9px;
 	box-shadow: 2px 2px 6px #333;
 }
-span.usernametag {
-	font-size: 30px;
+
+h1.usernametag {
+	font-size: 40px;
 	text-align: center;
 }
+
 .hidden {visibility: hidden;}
 .imageCard {color: white;box-shadow: 0px 0px 4px rgba(0,0,0,.9); margin: 0 auto;padding: 0;}
 img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom: 0px; border: 3px dashed white;}
@@ -94,10 +98,6 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom: 0px; border: 3px
 	}
 
 div.imageoverlay {
-	opacity: 1;
-	padding-top: 30px;
-	padding-bottom: 15px;
-	background: rgba(0,0,0,.7);
 }
 
 
