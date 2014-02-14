@@ -48,8 +48,9 @@
             for (var i = 0; i < cleanData.length; i++) {
                 var imagesHTML = 
                 '<ul class="imageCard col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
-                    '<a>' + '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' +
-                    
+                    '<a>' + 
+                        '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' +
+                        '<img src="images/vectorPin3.png" class="img-responsive pinBackground" />' +
                     '<div class="imageoverlay">' + 
                         '<span>' + cleanData[i].distance + '  Miles from you' + '</span>' + '<br>' + 
                         '<span> Location: ' + cleanData[i].locationName + '</span>' + '<br>' + 
