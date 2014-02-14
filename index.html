@@ -20,11 +20,10 @@
                 <div class="row">
                     <h1 class="page-header" id="feedHeader">
                         Feed.me
-                
-                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" id="loginLink" class="col-xs-1 col-md-1">
-                            <button class="instaIcon" role="button"></button>
-                        </a>
                     </h1>
+                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" id="loginLink" ><button class="instaIcon" role="button"></button>
+                        </a>
+                    
                 </div>
             </div>   
         </div>
@@ -52,10 +51,10 @@
                         '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' +
                         '<img src="images/vectorPin3.png" class="img-responsive pinBackground" />' +
                     '<div class="imageoverlay">' + 
-                        '<span>' + cleanData[i].distance + '  Miles from you' + '</span>' + '<br>' + 
-                        '<span> Location: ' + cleanData[i].locationName + '</span>' + '<br>' + 
-                        '<span>' + cleanData[i].createdTime + '</span>' + '<br>' + 
-                        '<span>' + cleanData[i].likes + ' likes</span>' + '<br>' + 
+                        '<span class="distancetag">' + cleanData[i].distance + '  Miles' + '</span>' + '<br>' + 
+                        '<span class="locationtag">"' + cleanData[i].locationName + '"</span>' + '<br>' + 
+                        // '<span class="timetag">' + cleanData[i].createdTime + '</span>' + '<br>' + 
+                        // '<span class="likestag">' + cleanData[i].likes + ' likes</span>' + '<br>' + 
                     '</div>' +
 
                     '</a>' + '<br>' + 
@@ -90,7 +89,7 @@
                 imageObj["distance"] = distanceMiles; 
                 imageObj["userName"] = sliceArr[i].caption.from.username; 
                 imageObj["locationName"] = sliceArr[i].location.name;
-                imageObj["imageUrl"] = sliceArr[i].images.low_resolution.url;
+                imageObj["imageUrl"] = sliceArr[i].images.standard_resolution.url;
                 imageObj["createdTime"] = new Date(Number(dataArr[i].created_time) * 1000).toDateString();
                 imageObj["likes"] = dataArr[i].likes.count; 
                 cleanData.push(imageObj);
