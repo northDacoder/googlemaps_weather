@@ -3,11 +3,40 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lily+Script+One);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300);
-body {padding:0px;margin:0px;background-attachment:fixed;background-repeat: no-repeat;background-image:url('images/stripes.jpeg');background-size: cover;font-family: 'Quicksand', cursive;font-weight: normal;text-decoration: none;}
-#wrapper {margin:0 auto;padding:0;width:1200px;height: 100%;}
-h1.page-header {font-family: 'Lily Script One', cursive;color: rgba(0,0,0,.8);text-align: center;font-size: 60px;border-bottom: none;box-shadow: inset 0px 5px 10px #111;padding-top: 20px;background: rgba(255,255,255,.1);}
-h1.page-header:hover {color: rgba(255,255,255,.6);}
-ul.imageCard {margin: 0 auto 40px auto;padding: 10px 10px 0px 10px;}
+body { 
+	padding:0px;
+	margin:0px;
+	background-attachment:fixed;
+	background-repeat: no-repeat;
+	/*background-image:url('images/stripes.jpeg')*/;
+	background-size: cover;
+	font-family: 'Quicksand', cursive;
+	font-weight: normal;
+	text-decoration: none;
+	background: white;
+}
+
+#wrapper {
+	margin:0 auto;
+	padding:0;
+	width: 1200px;
+	height: 100%;
+}
+
+h1.page-header {
+	font-family: 'Lily Script One', cursive;
+	color: rgba(255,255,255,1);
+	text-align: center;
+	font-size: 60px;
+	border-bottom: none;
+	box-shadow: inset 0px 5px 10px #111;
+	padding-top: 20px;
+	background: rgba(0,0,0,.8);
+}
+ul.imageCard {
+	margin: 0 auto 40px auto;
+	padding: 10px 10px 0px 10px;
+}
 div.imageoverlay {
 	/* background-image: url('images/navIcon1.gif'); */
 	/* background-size: 306px 306px; */
@@ -15,16 +44,17 @@ div.imageoverlay {
 	/* width: 306px; */
 	/* position: absolute; */
 	margin: 0 auto; 
-	width: 306px; 
-	height: 200px;
+	width: 264px; 
+	height: 150px;
 	top: 30px;
 	left: 24px;
 	margin-top: 15px;
 	padding: 30px;
 	color: white;
-	font-size: 22px;
+	font-size: 18px;
 	opacity: 1;
 	background: rgba(0,0,0,.7);
+	margin-top: -229px;
 }
 
 div.imageoverlay:hover {
@@ -54,17 +84,39 @@ button.instaIcon {
 h1.usernametag {
 	font-size: 40px;
 	text-align: center;
+	position: relative;
+	top: 60px;
+	margin-bottom: 70px;
 }
 
-.hidden {visibility: hidden;}
-.imageCard {color: white;box-shadow: 0px 0px 4px rgba(0,0,0,.9); margin: 0 auto;padding: 0;}
-img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom: 0px; border: 3px dashed white;}
-#instafeed {width:100%;margin: 0px auto;padding:0px;border-radius:8px;}
+.hidden {
+	visibility: hidden;
+}
+
+img {
+	margin: 0 auto;
+	margin-bottom: 0px;
+	position: relative;
+	z-index: -10;
+}
+
+#instafeed {
+	width:100%;
+	margin: 0px auto;
+	padding:0px;
+}
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 @media (max-width: 768px) {
-	body{margin: 0; padding: 0; padding-top: 75px; width: 100%; height: 100%;}
+	body{
+		margin: 0;
+		padding: 0; 
+		padding-top: 105px;
+		width: 100%; 
+		height: 100%;
+	}
+
 	#feedHeader {
 		padding-top: 18px;
 		font-size: 32px;
@@ -78,10 +130,20 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom: 0px; border: 3px
 		color: white;
 		z-index: 10;
 	}
+
+	div.imageoverlay {
+		width: 200px;
+		height: 155px;
+		position: relative;
+		top: 25px;
+		left: 0px;
+		font-size: 14px;
+	}
 	span.usernametag {
 		position: relative;
-		top: -250px;
+		top: -230px;
 	}
+
 	ul.imageCard span {
 		position: relative;
 		bottom: 12px;
@@ -96,16 +158,6 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom: 0px; border: 3px
 		position: relative;
 		bottom: 5px;
 	}
-
-div.imageoverlay {
-}
-
-
-div.imageoverlay:hover {
-	opacity: 1;
-}
-
-
 
 }
 /* Small devices (tablets, 768px and up) */
