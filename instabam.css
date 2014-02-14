@@ -142,6 +142,17 @@ img {
 	padding: 0px;
 }
 
+
+#mailme {
+	position: relative;
+	bottom: 100px;
+	width: 80px;
+	height: 80px;
+	border: none;
+	box-shadow: none;
+	margin-top: -90px;
+}
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 @media (max-width: 768px) {
