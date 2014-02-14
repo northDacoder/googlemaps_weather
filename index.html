@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>welcome to instabam!</title>
+    <title>Welcome to near.me!</title>
     <meta charset="utf-8">
     
     <!-- Meta Tags optimized for mobile -->
@@ -22,144 +22,24 @@
 <body>
     <!-- START OF PHOTO FEED -->
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="row">
-                    <h1 class="page-header" id="feedHeader">
-                        near.me
-                    </h1>
-                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" id="loginLink" ><button class="instaIcon" role="button"></button>
-                        </a>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+
+                        <!-- Page Header -->
+                        <h1 class="page-header" id="feedHeader">near.me</h1>
                     
-                </div>
-            </div>   
+                        <!-- Instagram Login Redirect -->
+                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" id="loginLink" ><button class="instaIcon" role="button"></button></a>
+                    
+                    </div>
+                </div>   
+            </div>
+
+            <!-- Instagram API Data -->
+            <div id="instafeed" class="row"></div>
         </div>
-        <div id="instafeed" class="row"></div>
     </div>
-    </div>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            var latitude;
-            var longitude; 
-        
-            Number.prototype.toRad = function() { return this * (Math.PI / 180); };
-       
-            var dataArr = [];
-            var cleanData = [];
-
-        function loadHtml() {
-            for (var i = 0; i < cleanData.length; i++) {
-                var imagesHTML = 
-                '<ul class="imageCard col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
-                    '<a href="' + cleanData[i].link + '">' + 
-                        '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' +
-                        '<img src="images/vectorPin3.png" class="img-responsive pinBackground" />' +
-                    '<div class="imageoverlay">' + 
-                        '<span class="distancetag">' + cleanData[i].distance + '  Miles' + '</span>' + '<br>' + 
-                        '<span class="locationtag">"' + cleanData[i].locationName + '"</span>' + '<br>' + 
-                        // '<span class="timetag">' + cleanData[i].createdTime + '</span>' + '<br>' + 
-                        // '<span class="likestag">' + cleanData[i].likes + ' likes</span>' + '<br>' + 
-                    '</div>' +
-
-                    '</a>' + '<br>' + 
-
-                    '<h1 class="usernametag">' + cleanData[i].userName + '</h1>' + '<br>' +
-                '</ul>';
-
-                $("#instafeed").append(imagesHTML);
-            } 
-        }
-
-        function success(position) {
-            latitude = Number(position.coords.latitude);
-            console.log("Geolocation latitude: " + latitude);
-            longitude = Number(position.coords.longitude); 
-            console.log("Geolocation longitude: " + longitude);
-            getData(); 
-        }
-        
-        function sliceData(arr) {
-            var sliceArr = arr; 
-
-            for (var i = 0; i < sliceArr.length; i++) {
-            
-            if (sliceArr[i].location != null) {
-                var imageObj = {}; 
-
-                var imgLat = sliceArr[i].location.latitude;
-                var imgLon = sliceArr[i].location.longitude;
-                var latitudeRad = latitude.toRad();
-                var imgLatRad = imgLat.toRad();
-                var distanceLat = (imgLat - latitude).toRad();
-                var distanceLon = (imgLon - longitude).toRad();
-
-                var R = 6371; // km
-                var a = Math.sin(distanceLat/2) * Math.sin(distanceLat/2) + Math.sin(distanceLon/2) * Math.sin(distanceLon/2) * Math.cos(latitudeRad) * Math.cos(imgLatRad); 
-                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-                var distanceKilo = R * c;
-                var distanceMiles = Math.round((distanceKilo * 3)/5);
-                console.log(distanceMiles); 
-
-                // var imglatitude = sliceArr[i].location.latitude; 
-                // var imglongitude = sliceArr[i].location.longitude;
-                // var distancelat = (imglatitude - latitude).toRad();
-                // var distancelon = (imglongitude - longitude).toRad();
-
-                // console.log("Image latitude: " + i + " " + imglatitude);
-                // console.log("Image longitude: " + i + " " + imglongitude); 
-                // latitude = latitude.toRad();
-                // imglatitude = imglatitude.toRad();
-
-                // console.log("Distance Lat: " + i + distancelat);
-                // console.log("Distance Lon: " + i + distancelon);   
-                // console.log("latitude Radians: " + i + latitude);
-                // console.log("Image latitude Radians: " + i + imglatitude); 
-
-                // var R = 6371; // km  
-                // var a = Math.sin(distancelat/2) * Math.sin(distancelat/2) + Math.sin(distancelon/2) * Math.sin(distancelon/2) * Math.cos(latitude) * Math.cos(imglatitude); 
-                // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-                // var distanceKilo = R * c; 
-                // var distanceMiles = Math.round((distanceKilo * 3)/5);
-
-                imageObj["distance"] = distanceMiles; 
-                imageObj["userName"] = sliceArr[i].caption.from.username; 
-                imageObj["locationName"] = sliceArr[i].location.name;
-                imageObj["imageUrl"] = sliceArr[i].images.low_resolution.url;
-                imageObj["createdTime"] = new Date(Number(dataArr[i].created_time) * 1000).toDateString();
-                imageObj["likes"] = dataArr[i].likes.count; 
-                imageObj["link"] = dataArr[i].link;
-                cleanData.push(imageObj);
-                }
-            }
-            cleanData.sort(function(a, b){
-                return a.distance - b.distance; 
-            });
-
-            loadHtml(); 
-        }
-
-        function getData() {
-            $.ajax({
-                type: 'GET',
-                url: "https://api.instagram.com/v1/users/self/feed?access_token=4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e",
-                dataType: 'jsonp',
-                success: function(json) {
-                    dataArr = json.data;  
-                    sliceData(dataArr); 
-                }
-            });
-        }
-
-        function error(msg) {console.log(msg);} 
-        if (navigator.geolocation) {
-            console.log("Geolocation found, getting coordinates now..."); 
-            navigator.geolocation.getCurrentPosition(success, error); 
-        } else {
-            console.log("Geolocation not found, please try again!");
-            error("not supported"); 
-        }
-       
-    });
-    </script>
+    
 </body>
 </html>
