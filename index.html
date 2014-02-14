@@ -32,6 +32,8 @@
     </div>
     </div>
     <script type="text/javascript">
+        $(document).ready(function(){
+
         Number.prototype.toRad = function() { return this * (Math.PI / 180); };
         var latitude;
         var longitude; 
@@ -47,12 +49,16 @@
                 var imagesHTML = 
                 '<ul class="imageCard col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
                     '<a>' + '<img src="' + cleanData[i].imageUrl + '" class="img-circle img-responsive" />' + '</a>' +
-                    '<span class="usernametag">' + cleanData[i].userName + '</span>' + '<br>' + 
-                    '<span>' + cleanData[i].distance + '  Miles from you' + '</span>' + '<br>' + 
-                    '<span>' + "Location: " + cleanData[i].locationName + '</span>' + '<br>' + 
-                    '<span>' + cleanData[i].createdTime + '</span>' + '<br>' + 
-                    '<span>' + cleanData[i].likes + ' likes</span>' + '<br>' + 
+                    
+                    '<div class="imageoverlay">' +
+                        '<span class="usernametag">' + cleanData[i].userName + '</span>' + '<br>' + 
+                        '<span>' + cleanData[i].distance + '  Miles from you' + '</span>' + '<br>' + 
+                        '<span> Location: ' + cleanData[i].locationName + '</span>' + '<br>' + 
+                        '<span>' + cleanData[i].createdTime + '</span>' + '<br>' + 
+                        '<span>' + cleanData[i].likes + ' likes</span>' + '<br>' + 
+                    '</div>' +
                 '</ul>';
+
                 $("#instafeed").append(imagesHTML);
             } 
         }
@@ -113,6 +119,8 @@
             error("not supported"); 
         }
 
+       
+    });
     </script>
 </body>
 </html>

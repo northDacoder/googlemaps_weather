@@ -8,8 +8,14 @@ body {padding:0px;margin:0px;background-attachment:fixed;background-repeat: no-r
 h1.page-header {font-family: 'Lily Script One', cursive;color: rgba(0,0,0,.8);text-align: center;font-size: 60px;border-bottom: none;box-shadow: inset 0px 5px 10px #111;padding-top: 20px;background: rgba(255,255,255,.1);}
 h1.page-header:hover {color: rgba(255,255,255,.6);}
 ul.imageCard {margin: 0 auto 40px auto;padding: 30px 20px 0px 20px;}
-ul.imageCard span {background-color: rgba(0,0,0,.7);padding: 4px;position: relative;bottom: 210px;left: 25px;}
-ul.imageCard span:hover {}
+div.imageoverlay {
+	opacity: 0;
+}
+
+div.imageoverlay:hover {
+	opacity: 1;
+}
+
 button.instaIcon {
 	box-shadow: none;
 	background-image: url('images/instaLogin.png');
@@ -54,6 +60,8 @@ img {margin: 0 auto;box-shadow: 1px 1px 5px #333;margin-bottom:20px;}
 		background-position: -16px -11px;
 		width: 76px;
 		height: 40px;
+		position: relative;
+		bottom: 5px;
 	}
 
 }
