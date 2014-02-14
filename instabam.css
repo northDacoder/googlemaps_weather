@@ -213,6 +213,13 @@ img {
 	*/
 	}
 
+	#mailme {
+		position: relative;
+		top: 35px;
+		right: 10px;
+
+	}
+
 
 }
 /* Small devices (tablets, 768px and up) */
