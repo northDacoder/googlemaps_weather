@@ -88,14 +88,19 @@ button.instaIcon {
 
 span.distancetag {
 	background-color: rgba(0,0,0,.6);
-		text-decoration: none;
+	text-decoration: none;
 
 }
 
 span.locationtag {
 	background-color: rgba(0,0,0,.6);
-		text-decoration: none;
+	text-decoration: none;
 
+}
+
+span.timetag {
+	background-color: rgba(0,0,0,.6);
+	text-decoration: none;
 }
 
 .row span {

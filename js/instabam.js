@@ -24,7 +24,7 @@ $(document).ready(function(){
                     	'<div class="imageoverlay">' + 
                         		'<span class="distancetag">' + cleanData[i].distance + '  Miles' + '</span>' + '<br>' + 
                         		'<span class="locationtag">"' + cleanData[i].locationName + '"</span>' + '<br>' + 
-                        		// '<span class="timetag">' + cleanData[i].createdTime + '</span>' + '<br>' + 
+                        		'<span class="timetag">' + cleanData[i].createdTime + '</span>' + '<br>' + 
                         		// '<span class="likestag">' + cleanData[i].likes + ' likes</span>' + '<br>' + 
                     	'</div>' +
 
