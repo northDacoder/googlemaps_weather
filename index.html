@@ -7,8 +7,7 @@
     <!-- Meta Tags optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="images/nearme.png">
-
+    <link rel="apple-touch-icon" href="images/ios7_app_icon_iphone@2x.png">
     <!-- CSS Styles -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="instabam.css">
@@ -26,21 +25,27 @@
                 <div class="col-xs-12">
                     <div class="row">
 
-                        <!-- Page Header -->
-                        
+                        <a href="mailto:northdacoder@gmail.com?subject=near.me&body=I have a question about your awesome site!!" >
+                            <img src="images/mailmeblue.gif" width="80px" height="80px" id="mailme" />
+                        </a>
 
-                        <!-- Center Title --> 
-                        <h1 class="page-header" id="feedHeader">near.me
+                        <h1 class="page-header" id="feedHeader">near.me</h1>
+            
+                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://www.whosenear.me&response_type=token">
+                        <button class="instaIcon btn btn-primary" role="button">Login</button
+                        ></a>
                     
-                        <!-- Instagram Login Redirect -->
-                        <a href="https://instagram.com/oauth/authorize/?client_id=16de7c347c604761bcae480576af41e8&redirect_uri=http://powerful-shelf-1242.herokuapp.com&response_type=token" >
-
-                            <button class="instaIcon btn btn-primary" role="button">Login</button></a>
-                        </h1>
                     </div>
 
-                    <div class="row">
-                        <a href="mailto:northdacoder@gmail.com?subject=near.me&body=I have a question about your awesome site!!" class="mailicon"><img src="images/mailme.gif" id="mailme" /></a>
+                    <div class="row" id="firstRow">
+                       
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-1"></div>
+                        
+                        <input class="col-xs-6" type="text" id="searchinput" placeholder="Enter city..." />
+                        
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-2"></div>
                     </div>
                 
                 </div>   

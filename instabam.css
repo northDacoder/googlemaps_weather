@@ -26,7 +26,7 @@ h1.page-header {
 	font-family: 'Quicksand', cursive;
 	color: rgba(255,255,255,1);
 	text-align: center;
-	font-size: 60px;
+	font-size: 50px;
 	border-bottom: none;
 	box-shadow: inset 0px 5px 10px #111;
 	padding-top: 10px;
@@ -60,62 +60,20 @@ div.imageoverlay {
 	bottom: 60px;
 }
 
-div.imageoverlay:hover {
-	opacity: 1;
+div#firstRow {margin-bottom: 40px;}
+#firstRow {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: -40px;
 }
 
-
-div.imageoverlay:hover {
-	opacity: 1;
-	text-decoration: none;
-}
-
-button.instaIcon {
-	/*background-image: url('images/instaLogin.png');
-	background-repeat: no-repeat;
-	background-size: 150px 75px;
-	background-position: -28px -17px;
-	width: 100px;
-	height: 40px;
-	padding: 0;
-	margin: 0;
-	border-radius: 7px;
-	border: 1px solid rgba(0,0,0,.7);
-	box-shadow: 1px 1px 1px #333;
-	position: relative;
-	bottom: 50px;*/
-}
-
-span.distancetag {
-	background-color: rgba(0,0,0,.6);
-	text-decoration: none;
-
-}
-
-span.locationtag {
-	background-color: rgba(0,0,0,.6);
-	text-decoration: none;
-
-}
-
-span.timetag {
-	background-color: rgba(0,0,0,.6);
-	text-decoration: none;
-}
-
-.row span {
-	padding: 5px;
-	text-decoration: none;
-
-}
-h1.usernametag {
-	font-size: 40px;
-	text-align: center;
-	margin-bottom: 120px;
-	position: relative;
-	top: 70px;
-}
-
+div.imageoverlay:hover {opacity: 1;}
+div.imageoverlay:hover {opacity: 1;text-decoration: none;}
+span.distancetag {background-color: rgba(0,0,0,.6);text-decoration: none;}
+span.locationtag {background-color: rgba(0,0,0,.6);text-decoration: none;}
+span.timetag {background-color: rgba(0,0,0,.6);text-decoration: none;}
+.row span {padding: 5px;text-decoration: none;}
+h1.usernametag {font-size: 40px;text-align: center;margin-bottom: 120px;position: relative;top: 70px;}
 img {
 	padding: 0;
 	margin: 0 auto;
@@ -144,13 +102,11 @@ img {
 
 
 #mailme {
-	position: relative;
-	bottom: 100px;
-	width: 80px;
-	height: 80px;
+	width: 50px;
+	height: 50px;
 	border: none;
+	position: relative;
 	box-shadow: none;
-	margin-top: -90px;
 }
 
 /* Extra small devices (phones, less than 768px) */
@@ -165,8 +121,8 @@ img {
 	}
 
 	#feedHeader {
-		padding-top: 18px;
-		font-size: 32px;
+		padding-top: 24px;
+		font-size: 22px;
 		position: fixed;
 		width: 100%;
 		height: 60px;
@@ -186,39 +142,18 @@ img {
 		left: 0px;
 		font-size: 14px;
 	}
-
-	div.imageoverlay {
-		opacity: 1;
-		text-decoration: none;	
-	}
-
-	ul.imageCard {
-		margin-bottom: 80px;
-	}
+	div.imageoverlay {opacity: 1;text-decoration: none;}
+	ul.imageCard {margin-bottom: 80px;}
 	ul.imageCard span {
 		position: relative;
 		bottom: 12px;
 		left: 0px;
 	}
 
-	h1.usernametag {
-		position: relative;
-		top: 120px;
+	h1.usernametag {position: relative; top: 120px;}
+	#mailme {position: relative; top: -86px; left: 20px; z-index: 10; width: 80px height: 80px;
 	}
 
-	.instaIcon {
-	/*	position: relative;
-		top: -25px;
-		left: 10px;
-	*/
-	}
-
-	#mailme {
-		position: relative;
-		top: 35px;
-		right: 10px;
-
-	}
 
 
 }
