@@ -94,8 +94,8 @@ $(document).ready(function(){
         function getData() {
             $.ajax({
                 type: 'GET',
-                url: "https://api.instagram.com/v1/tags/search?q=oshie&access_token=4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e",
-                // url: "https://api.instagram.com/v1/users/self/feed?access_token=4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e",
+                // url: "https://api.instagram.com/v1/tags/search?q=oshie&access_token=4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e",
+                url: "https://api.instagram.com/v1/users/self/feed?access_token=4489780.16de7c3.328969cef4274f3cbb8ebed09333c30e",
                 dataType: 'jsonp',
                 success: function(json) {
                     dataArr = json.data;  
